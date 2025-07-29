@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('name');
             $table->string('phone');
-            // $table->uuid('division_id');
             $table->string('position');
             $table->timestamps();
             $table->foreignUuid('division_id')->references('id')->on('divisions')->onDelete('cascade');

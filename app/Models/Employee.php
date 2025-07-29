@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Str;
 
 class Employee extends Model
 {
@@ -24,6 +23,7 @@ class Employee extends Model
         'id' => 'string',
     ];
     public $keyType = 'string';
+    public $incrementing = false;
     public function division()
     {
         return $this->belongsTo(Division::class, 'division_id');

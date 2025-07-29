@@ -17,6 +17,7 @@ class Division extends Model
         'id' => 'string',
     ];
     public $keyType = 'string';
+    public $incrementing = false;
     public function employees()
     {
         return $this->hasMany(Employee::class, 'division_id');

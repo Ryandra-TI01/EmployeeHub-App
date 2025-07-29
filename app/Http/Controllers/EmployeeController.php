@@ -13,7 +13,7 @@ class EmployeeController extends Controller
         $query = Employee::with('division');
 
         if ($request->filled('name')) {
-            $query->where('name', 'ILIKE', '%' . $request->name . '%');
+            $query->where('name', 'ILIKE', '%' . $request->input('name') . '%');
         }
 
         if ($request->filled('division_id')) {
@@ -75,7 +75,7 @@ class EmployeeController extends Controller
         $path = $request->file('image')?->store('employees', 'public');
 
         $employee->update([
-            'image' => $path ? asset('storage/' . $path) : $employee->image,
+            'image' => $path ? $path : $employee->image,
             'name' => $validated['name'],
             'phone' => $validated['phone'],
             'division_id' => $validated['division_id'],

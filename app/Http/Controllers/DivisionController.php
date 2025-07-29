@@ -14,6 +14,9 @@ class DivisionController extends Controller
 
         if ($request->filled('name')) {
             $query->where('name', 'ILIKE', '%' . $request->name . '%');
+            // Use parameter binding for safety
+            // $query->where('name', 'ILIKE', '%' . $request->name . '%');
+            $query->where('name', 'ILIKE', '%' . $request->input('name') . '%');
         }
 
         $divisions = $query->paginate(10);
